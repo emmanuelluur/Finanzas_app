@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS finanzas_app DEFAULT CHARACTER SET utf8 COLLATE ut
 USE finanzas_app;
 
 -- Create the table in the specified schema
-CREATE TABLE tbl_users
+CREATE TABLE IF NOT EXISTS tbl_users
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, -- primary key column
     name varchar(60),
@@ -18,7 +18,7 @@ CREATE TABLE tbl_users
     -- specify more columns here
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE tbl_ingresos
+CREATE TABLE IF NOT EXISTS tbl_ingresos
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     idUser INT,
@@ -26,13 +26,13 @@ CREATE TABLE tbl_ingresos
     ticket int,
     mount DECIMAL(19,4),
     dateReg DATE,
-    timeReg DATE,
+    timeReg TIME,
     created_at DATETIME,
     updated_at DATETIME
     -- specify more columns here
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE tbl_egresos
+CREATE TABLE IF NOT EXISTS tbl_egresos
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     idUser INT,
@@ -40,7 +40,7 @@ CREATE TABLE tbl_egresos
     ticket int,
     mount DECIMAL(19,4),
     dateReg DATE,
-    timeReg DATE,
+    timeReg TIME,
     created_at DATETIME,
     updated_at DATETIME
     -- specify more columns here
