@@ -6,7 +6,7 @@ require_once "../content/header.html";
     <hr>
     <h3>Registro de Ingresos</h3>
     <div class = "row">
-        <div class = 'col'>
+        <div class = 'col-sm-4'>
             <form id = 'registraIngresos'>
                 <div class = "form-group">
                     <label for="description">Descripción</label>

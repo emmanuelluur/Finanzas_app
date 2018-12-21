@@ -19,7 +19,7 @@ $capsule->setAsGlobal();
 
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
-class Eventos extends Model
+class Usuarios extends Model
 {
-    protected $table = "tbl_eventos";
+    protected $table = "tbl_users";
 }
