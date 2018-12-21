@@ -14,7 +14,7 @@ require_once "../content/header.html";
                 </div>
                 <div class = "form-group">
                     <label for="ticket"># Ticket</label>
-                    <input type="number" class='form-control' id = 'ticket' name='ticket'>
+                    <input type="text" class='form-control' id = 'ticket' name='ticket'>
                 </div>
                 <div class = "form-group">
                     <label for="mount">Monto</label>

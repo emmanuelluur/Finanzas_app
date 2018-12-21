@@ -10,7 +10,7 @@ if (isset($_POST['save'])) {
     //  reglas de validacion
     $description = v::stringType()->notEmpty();
     $monto = v::numeric()->notEmpty();
-    $ticket = v::numeric()->notEmpty();
+    $ticket = v::stringType()->notEmpty();
    
     try {
         //  se validan los datos
@@ -30,7 +30,7 @@ if (isset($_POST['save'])) {
         echo "<div class='alert alert-success'>Guardado</div>";
     } catch (\Exception $e) {
         //  Si falla la validacion
-        echo "<div class='alert alert-danger'>Todos los campos son requeridos</div>";
+        echo $e->getMessage();//"<div class='alert alert-danger'>Todos los campos son requeridos</div>";
     }
 
 }
