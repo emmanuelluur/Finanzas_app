@@ -7,6 +7,8 @@ $protected = "all";
 
 if($route == '/'):
     require_once "../views/index.php";
-else:
+elseif(file_exists("../views/{$route}.php")):
     require_once "../views/{$route}.php";
+else:
+    echo "Se perdio este archivo...";
 endif;

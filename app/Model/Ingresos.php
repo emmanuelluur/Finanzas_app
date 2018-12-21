@@ -19,7 +19,6 @@ $capsule->setAsGlobal();
 
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
-
 class Ingresos extends Model
 {
     protected $table = "tbl_ingresos";
