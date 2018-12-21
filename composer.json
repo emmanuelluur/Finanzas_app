@@ -5,6 +5,6 @@
         }
     },
     "require": {
-        
+        "respect/validation": "^1.1"
     }
 }
