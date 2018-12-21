@@ -1,7 +1,7 @@
 <?php
 require_once "../../vendor/autoload.php";
 use Respect\Validation\Validator as v;
-use App\Model\Ingresos;
+use App\Model\Gastos;
 use App\Controller\BaseController;
 
 // guarda ingresos
@@ -18,15 +18,15 @@ if (isset($_POST['save'])) {
         $ticket->assert($data['ticket']);
         $monto->assert($data['mount']);
         //  guardado BD
-        $ingresos = new Ingresos;
-        $ingresos->description = BaseController::avoidXss($data['description']);
-        $ingresos->ticket = BaseController::avoidXss($data['ticket']);
-        $ingresos->mount = BaseController::avoidXss($data['mount']);
-        $ingresos->dateReg = DATE('Y-m-d');
-        $ingresos->timeReg = DATE('H:i:s');
-        $ingresos->eventType = 1;
-        $ingresos->idUser = 1;
-        $ingresos->save();
+        $gastos = new Gastos;
+        $gastos->description = BaseController::avoidXss($data['description']);
+        $gastos->ticket = BaseController::avoidXss($data['ticket']);
+        $gastos->mount = BaseController::avoidXss($data['mount']);
+        $gastos->dateReg = DATE('Y-m-d');
+        $gastos->timeReg = DATE('H:i:s');
+        $gastos->eventType = 2;
+        $gastos->idUser = 1;
+        $gastos->save();
         //  respuesta de guardado
         echo "<div class='alert alert-success'>Guardado</div>";
     } catch (\Exception $e) {

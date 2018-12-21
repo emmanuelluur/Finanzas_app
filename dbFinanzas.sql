@@ -18,13 +18,14 @@ CREATE TABLE IF NOT EXISTS tbl_users
     -- specify more columns here
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS tbl_ingresos
+CREATE TABLE IF NOT EXISTS tbl_eventos
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     idUser INT,
     description text,
     ticket text,
     mount DECIMAL(19,4),
+    eventType int,
     dateReg DATE,
     timeReg TIME,
     created_at DATETIME,
@@ -32,19 +33,6 @@ CREATE TABLE IF NOT EXISTS tbl_ingresos
     -- specify more columns here
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS tbl_egresos
-(
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-    idUser INT,
-    description text,
-    ticket text,
-    mount DECIMAL(19,4),
-    dateReg DATE,
-    timeReg TIME,
-    created_at DATETIME,
-    updated_at DATETIME
-    -- specify more columns here
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 

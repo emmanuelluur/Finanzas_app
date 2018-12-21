@@ -4,10 +4,10 @@ require_once "../content/header.html";
 
 <div class = "container">
     <hr>
-    <h3>Registro de Ingresos</h3>
+    <h3>Registro de Gastos</h3>
     <div class = "row">
         <div class = 'col'>
-            <form id = 'registraIngresos'>
+            <form id = 'registraGastos'>
                 <div class = "form-group">
                     <label for="description">Descripción</label>
                     <input type="text" class='form-control' id = 'description' name='description'>
@@ -21,13 +21,13 @@ require_once "../content/header.html";
                     <input type="bumber" step = 'any' class='form-control' id = 'mount' name='mount'>
                 </div>
                 <span id = 'responseText'></span>
-                <button type='button' class='btn btn-success btn-sm btn-block' id = 'saveIngreso' name = 'saveIngreso'> Registrar</button>
+                <button type='button' class='btn btn-success btn-sm btn-block' id = 'saveGasto' name = 'saveGasto'> Registrar</button>
             </form>
         </div>
         <div class = 'col'></div>
     </div>
 </div>
-<script src="../views/js/ingresosJs.js"></script>
+<script src="../views/js/gastosJs.js"></script>
 <?php
 require_once "../content/footer.html";
 ?>
