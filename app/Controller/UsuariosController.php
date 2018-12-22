@@ -1,19 +1,19 @@
 <?php
 require_once "../../vendor/autoload.php";
-use Respect\Validation\Validator as v;
-use App\Model\Usuarios;
 use App\Controller\BaseController;
+use App\Model\{Usuarios,Eventos};
+use Respect\Validation\Validator as v;
 
 // guarda usuario
 if (isset($_POST['save'])) {
-    $data = $_POST; //  datos enviados 
+    $data = $_POST; //  datos enviados
     //  reglas de validacion
     $name = v::stringType()->notEmpty();
     $lastname = v::stringType()->notEmpty();
     $email = v::stringType()->notEmpty();
     $password = v::stringType()->notEmpty();
     $image = v::stringType()->notEmpty();
-   
+
     try {
         //  se validan los datos
         $name->assert($data['name']);
@@ -42,25 +42,32 @@ if (isset($_POST['save'])) {
 
 }
 
-
 // muestra usuario
 if (isset($_GET['getUser'])) {
-    $data = $_GET; //  datos enviados 
-    //  reglas de validacion
-    try {
-        //  listado BD
-        $usuario = Usuarios::where('id', 1)->first();
-        //  respuesta de consulta
-        $user = array(
+    $data = $_GET; //  datos enviados
+    $user = [
+        "nombre" => "N/A",
+        "imagen" => "../uploads/404.jpg",
+        "appelido" => "N/A",
+        "email" => "ex@example.com",
+        "balance" => 0.000,
+    ];
+    //  Balance
+    $ingresos = Eventos::Where([['idUser',$data['id_user']], ['eventType',1]])->sum('mount');
+    $egresos = Eventos::Where([['idUser',$data['id_user']], ['eventType',2]])->sum('mount');
+    $balance = $ingresos - $egresos;
+    //  var_dump($balance);die;
+    $usuario = Usuarios::find($data['id_user']); // en sql seria select * from tbl where id = 1
+    if ($usuario != ''):
+        $user = [
             "nombre" => $usuario->name,
             "imagen" => $usuario->image,
             "appelido" => $usuario->lastname,
             "email" => $usuario->mail,
-        );
-        echo json_encode($user);
-    } catch (\Exception $e) {
-        //  Si falla la validacion $e->getMessage();
-        return "<div class='alert alert-danger'>Todos los campos son requeridos</div>";
-    }
+            "balance" => $balance,
+        ];
+    endif;
+   
+    echo json_encode($user);
 
 }

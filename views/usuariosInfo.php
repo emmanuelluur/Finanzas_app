@@ -13,6 +13,7 @@ require_once "../content/header.html";
             <p>Nombre: <span id = 'name'></span></p> 
             <p>Apellidos: <span id = 'lastname'></span></p> 
             <p>Email: <span id = 'mail'></span></p> 
+            <p>Balance: $ <span id = 'balance'></span></p> 
         </div>
     </div>
 </div>
