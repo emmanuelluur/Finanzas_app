@@ -28,6 +28,9 @@ require_once "../content/header.html";
     </div>
 </div>
 <script src="../views/js/ingresosJs.js"></script>
+<script>
+saveIngreso(1);
+</script>
 <?php
 require_once "../content/footer.html";
 ?>

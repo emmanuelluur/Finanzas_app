@@ -54,6 +54,8 @@ if (isset($_GET['getUser'])) {
         $user = array(
             "nombre" => $usuario->name,
             "imagen" => $usuario->image,
+            "appelido" => $usuario->lastname,
+            "email" => $usuario->mail,
         );
         echo json_encode($user);
     } catch (\Exception $e) {

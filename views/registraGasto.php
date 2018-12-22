@@ -28,6 +28,9 @@ require_once "../content/header.html";
     </div>
 </div>
 <script src="../views/js/gastosJs.js"></script>
+<script>
+saveGasto(1);
+</script>
 <?php
 require_once "../content/footer.html";
 ?>

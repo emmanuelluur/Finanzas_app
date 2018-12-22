@@ -6,14 +6,14 @@ require_once "../content/header.html";
     <hr>
     <h3>Usuario</h3>
     <div class = "row">
-        <div class = 'col-sm-4'>
-            <div class="row">
-                <div class="col"><div id="image"></div></div>
-                <div class="col-sm-4"><p ><span id = 'name'></span></p> </div>
-            </div>
-            
+        <div class = 'col-sm-2'>
+            <div id="image"></div>
         </div>
-        <div class = 'col'></div>
+        <div class = 'col'>
+            <p>Nombre: <span id = 'name'></span></p> 
+            <p>Apellidos: <span id = 'lastname'></span></p> 
+            <p>Email: <span id = 'mail'></span></p> 
+        </div>
     </div>
 </div>
 <script src="../views/js/usuarioJs.js"></script>
