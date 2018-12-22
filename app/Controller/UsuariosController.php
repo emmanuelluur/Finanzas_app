@@ -4,7 +4,7 @@ use Respect\Validation\Validator as v;
 use App\Model\Usuarios;
 use App\Controller\BaseController;
 
-// guarda ingresos
+// guarda usuario
 if (isset($_POST['save'])) {
     $data = $_POST; //  datos enviados 
     //  reglas de validacion
@@ -37,7 +37,28 @@ if (isset($_POST['save'])) {
         echo "<div class='alert alert-success'>Guardado</div>";
     } catch (\Exception $e) {
         //  Si falla la validacion $e->getMessage();
-        echo $e->getMessage();"<div class='alert alert-danger'>Todos los campos son requeridos</div>";
+        echo "<div class='alert alert-danger'>Todos los campos son requeridos</div>";
+    }
+
+}
+
+
+// muestra usuario
+if (isset($_GET['getUser'])) {
+    $data = $_GET; //  datos enviados 
+    //  reglas de validacion
+    try {
+        //  listado BD
+        $usuario = Usuarios::where('id', 1)->first();
+        //  respuesta de consulta
+        $user = array(
+            "nombre" => $usuario->name,
+            "imagen" => $usuario->image,
+        );
+        echo json_encode($user);
+    } catch (\Exception $e) {
+        //  Si falla la validacion $e->getMessage();
+        return "<div class='alert alert-danger'>Todos los campos son requeridos</div>";
     }
 
 }

@@ -37,6 +37,9 @@ require_once "../content/header.html";
     </div>
 </div>
 <script src="../views/js/usuarioJs.js"></script>
+<script>
+saveUser(1);
+</script>
 <?php
 require_once "../content/footer.html";
 ?>
