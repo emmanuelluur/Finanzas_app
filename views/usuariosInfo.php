@@ -1,10 +1,12 @@
 <?php
 require_once "../content/header.html";
+
+
 ?>
 
 <div class = "container">
     <hr>
-    <h3>Usuario</h3>
+    <h3>Bienvenidio <span id = 'nombreCompleto'></span></h3>
     <div class = "row">
         <div class = 'col-sm-2'>
             <div id="image"></div>
@@ -19,7 +21,7 @@ require_once "../content/header.html";
 </div>
 <script src="../views/js/usuarioJs.js"></script>
 <script>
-getUsers(1);
+getUsers('<?php echo $id;?>');
 </script>
 <?php
 require_once "../content/footer.html";

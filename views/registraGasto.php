@@ -29,7 +29,7 @@ require_once "../content/header.html";
 </div>
 <script src="../views/js/gastosJs.js"></script>
 <script>
-saveGasto(1);
+saveGasto('<?php echo $id;?>');
 </script>
 <?php
 require_once "../content/footer.html";

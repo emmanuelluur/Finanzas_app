@@ -46,6 +46,8 @@ function getUsers(id_usuario) {
             document.querySelector('#lastname').innerHTML = JSON.parse(this.responseText)['appelido'];
             document.querySelector('#mail').innerHTML = JSON.parse(this.responseText)['email'];
             document.querySelector('#balance').innerHTML = JSON.parse(this.responseText)['balance'];
+            document.querySelector('#nombreCompleto').innerHTML = JSON.parse(this.responseText)['nombre'] + " " + JSON.parse(this.responseText)['appelido'];
+
         }
     }
 
