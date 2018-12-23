@@ -76,7 +76,7 @@ btn_auth.addEventListener("click", function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             //  document.querySelector("#responseText").innerHTML = this.responseText;
-            self.location = "usuariosInfo";
+            self.location = "usuario";
             //  form.reset();
         }
     }

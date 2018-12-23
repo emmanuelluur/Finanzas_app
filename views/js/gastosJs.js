@@ -1,5 +1,5 @@
 
-function saveGasto(id_user){
+function saveGasto(){
     let btn_guarda = document.querySelector("#saveGasto");
 
     btn_guarda.addEventListener("click", function () {
@@ -7,7 +7,7 @@ function saveGasto(id_user){
         let form = document.querySelector("#registraGastos");
         let formData = new FormData(form);
         formData.append("save", true);
-        formData.append("idUser", id_user);
+        
         let request = new XMLHttpRequest();
         request.open('POST', url, true);
         //  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

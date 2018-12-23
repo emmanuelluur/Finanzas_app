@@ -1,5 +1,5 @@
 
-function saveIngreso(id_user){
+function saveIngreso(){
     let btn_guarda = document.querySelector("#saveIngreso");
 
     btn_guarda.addEventListener("click", function () {
@@ -7,7 +7,7 @@ function saveIngreso(id_user){
         let form = document.querySelector("#registraIngresos");
         let formData = new FormData(form);
         formData.append("save", true);
-        formData.append("idUser", id_user);
+        
         let request = new XMLHttpRequest();
         request.open('POST', url, true);
         //  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
