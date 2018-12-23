@@ -77,7 +77,7 @@ btn_auth.addEventListener("click", function () {
             console.log(this.responseText);
             //  document.querySelector("#responseText").innerHTML = this.responseText;
             self.location = "usuario";
-            //  form.reset();
+            //form.reset();
         }
     }
     request.send(formData);

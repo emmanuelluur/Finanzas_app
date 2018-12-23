@@ -4,7 +4,7 @@ use App\Controller\BaseController;
 use App\Model\Eventos;
 use App\Model\Usuarios;
 use Respect\Validation\Validator as v;
-
+session_start();
 $dotenv = new Dotenv\Dotenv("../../");
 $dotenv->load();
 
@@ -20,11 +20,11 @@ class UsuariosController extends BaseController
             "balance" => 0.000,
         ];
         //  Balance
-        $ingresos = Eventos::Where([['idUser', $data['id_user']], ['eventType', 1]])->sum('mount');
-        $egresos = Eventos::Where([['idUser', $data['id_user']], ['eventType', 2]])->sum('mount');
+        $ingresos = Eventos::Where([['idUser', $_SESSION['idUser']], ['eventType', 1]])->sum('mount');
+        $egresos = Eventos::Where([['idUser', $_SESSION['idUser']], ['eventType', 2]])->sum('mount');
         $balance = $ingresos - $egresos;
         //  var_dump($balance);die;
-        $usuario = Usuarios::find($data['id_user']); // en sql seria select * from tbl where id = 1
+        $usuario = Usuarios::find($_SESSION['idUser']); // en sql seria select * from tbl where id = 1
         if ($usuario != ''):
             $user = [
                 "nombre" => $usuario->name,
@@ -57,9 +57,10 @@ class UsuariosController extends BaseController
             ];
             $mensaje = null;
             //  Busca mail registrado
-            $userBd = Usuarios::where("mail", BaseController::avoidXss($data['mail']))->first();
+            $userBd = Usuarios::where("mail", "=", $data['mail'])->get();
+            
             //  guardado BD
-            if ($userBd->mail != $data['mail']) { //  Verifica que mail no este registrado
+            if ( count($userBd) == 0 || $userBd[0]->mail != $data['mail']) { //  Verifica que mail no este registrado
                 $usuario = new Usuarios;
 
                 $usuario->name = BaseController::avoidXss($data['name']);
@@ -77,7 +78,7 @@ class UsuariosController extends BaseController
             echo $mensaje;
         } catch (\Exception $e) {
             //  Si falla la validacion $e->getMessage();
-            echo "<div class='alert alert-danger'>Todos los campos son requeridos</div>";
+            echo $e->getMessage();"<div class='alert alert-danger'>Todos los campos son requeridos</div>";
         }
     }
 }

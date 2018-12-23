@@ -1,5 +1,5 @@
-function getUsers(id_usuario) {
-    let url = "../app/Controller/UsuariosController.php?getUser=true" + "&id_user=" + id_usuario;
+function getUsers() {
+    let url = "../app/Controller/UsuariosController.php?getUser=true";
 
     let request = new XMLHttpRequest();
     request.open('GET', url, true);

@@ -22,7 +22,7 @@ require_once "../content/header.html";
 </div>
 <script src="../views/js/usuarioJs.js"></script>
 <script>
-getUsers('<?php echo $id;?>');
+getUsers();
 </script>
 <?php
 require_once "../content/footer.html";
