@@ -1,3 +1,7 @@
 <?php
+require_once "../content/header.html";
+?>
 
-echo "index";
+<?php
+require_once "../content/footer.html";
+?>

@@ -9,7 +9,7 @@ require_once "../content/header.html";
         <div class = 'col-sm-2'></div>
         <div class = 'col-sm-4'>
             <p><h4>Se perdio este archivo...</h4></p>
-            <img src="../uploads/404.jpg" alt="404">
+            <img src="../uploads/404.jpg" class = 'img-fluid' alt="404">
         </div>
         
     </div>

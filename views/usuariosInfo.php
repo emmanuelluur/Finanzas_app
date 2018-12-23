@@ -7,9 +7,10 @@ require_once "../content/header.html";
 <div class = "container">
     <hr>
     <h3>Bienvenidio <span id = 'nombreCompleto'></span></h3>
-    <div class = "row">
-        <div class = 'col-sm-2'>
+    <div class = "row" >
+        <div class = 'col-sm-2' style = 'text-align:center;'>
             <div id="image"></div>
+            <p> <h5> <a href="editarUsuario"> Editar </a> </h5> </p>
         </div>
         <div class = 'col'>
             <p>Nombre: <span id = 'name'></span></p> 
