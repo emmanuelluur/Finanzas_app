@@ -10,7 +10,7 @@ require_once "../content/header.html";
     <div class = "row" >
         <div class = 'col-sm-2' style = 'text-align:center;'>
             <div id="image"></div>
-            <p> <h5> <a href="editaUsuario"> Editar </a> </h5> </p>
+            <p> <h5> <a href="edita-usuario"> Editar </a> </h5> </p>
         </div>
         <div class = 'col'>
             <p>Nombre: <span id = 'name'></span></p> 
