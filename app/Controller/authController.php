@@ -3,7 +3,8 @@ require_once "../../vendor/autoload.php";
 session_start();
 use App\Model\Usuarios;
 use Respect\Validation\Validator as v;
-
+$dotenv = new Dotenv\Dotenv("../../");
+$dotenv->load();
 // guarda ingresos
 if (isset($_POST['loginAuth'])) {
     $data = $_POST; //  datos enviados

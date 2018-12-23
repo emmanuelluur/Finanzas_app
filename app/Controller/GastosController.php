@@ -3,7 +3,8 @@ require_once "../../vendor/autoload.php";
 use Respect\Validation\Validator as v;
 use App\Model\Gastos;
 use App\Controller\BaseController;
-
+$dotenv = new Dotenv\Dotenv("../../");
+$dotenv->load();
 // guarda ingresos
 if (isset($_POST['save'])) {
     $data = $_POST; //  datos enviados 

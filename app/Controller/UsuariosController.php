@@ -3,7 +3,8 @@ require_once "../../vendor/autoload.php";
 use App\Controller\BaseController;
 use App\Model\{Usuarios,Eventos};
 use Respect\Validation\Validator as v;
-
+$dotenv = new Dotenv\Dotenv("../../");
+$dotenv->load();
 // guarda usuario
 if (isset($_POST['save'])) {
     $data = $_POST; //  datos enviados

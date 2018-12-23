@@ -1,7 +1,6 @@
 <?php
 include_once "../vendor/autoload.php";
 session_start();
-$required = true;
 
 if (!isset($_SESSION['idUser'])) {
     require_once "../views/login.php";
