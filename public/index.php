@@ -10,6 +10,7 @@ $arreglo = [
         "usuario" => ["file" => "../views/usuario.php"],
         "login" => ["file" => "../views/login.php"],
         "logout" => ["file" => "../views/logout.php"],
+        "edita-usuario" => ["file" => "../views/usuarioEdita.php"],
     ],
 
 ];
