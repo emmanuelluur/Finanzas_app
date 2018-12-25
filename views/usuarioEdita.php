@@ -25,6 +25,7 @@ require_once "../content/header.html";
                 <div class = 'form-group'>
                     Email: <span id = 'mail'></span>
                 </div>
+                <span id = 'responseText'></span>
                 <button type='button' class = 'btn btn-primary btn-sm' id = 'editUser'>Guardar</button>
                 <strong><a href="usuario"> Regresar </a></strong>
             </form>
@@ -35,6 +36,7 @@ require_once "../content/header.html";
 <script src="../views/js/usuarioJs.js"></script>
 <script>
 getUsersEdit();
+editUser();
 </script>
 <?php
 require_once "../content/footer.html";

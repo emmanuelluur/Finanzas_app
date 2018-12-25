@@ -23,7 +23,7 @@ function getUsers() {
 
         }
     }
-    request.send( );
+    request.send();
 }
 
 function getUsersEdit() {
@@ -51,5 +51,27 @@ function getUsersEdit() {
 
         }
     }
-    request.send( );
+    request.send();
+}
+
+function editUser() {
+    let btn_guarda = document.querySelector("#editUser");
+
+    btn_guarda.addEventListener("click", function () {
+        let url = "../app/Controller/UsuariosController.php";
+        let form = document.querySelector("#usuarioEdita");
+        let formData = new FormData(form);
+        formData.append("editUser", true);
+        let request = new XMLHttpRequest();
+        request.open('POST', url, true);
+        //  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        request.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector("#responseText").innerHTML = this.responseText;
+                //  getUsersEdit();
+                location.reload();
+            }
+        }
+        request.send(formData);
+    });
 }
