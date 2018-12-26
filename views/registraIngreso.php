@@ -20,6 +20,12 @@ require_once "../content/header.html";
                     <label for="mount">Monto</label>
                     <input type="bumber" step = 'any' class='form-control' id = 'mount' name='mount'>
                 </div>
+                <div class = "form-group">
+                    <label for="mount">Categoria</label>
+                    <select name="categoria" id="categoria" class = "form-control">
+                        <option value="0">Sin categoria</option>
+                    </select>
+                </div>
                 <span id = 'responseText'></span>
                 <button type='button' class='btn btn-success btn-sm btn-block' id = 'saveIngreso' name = 'saveIngreso'> Registrar</button>
             </form>

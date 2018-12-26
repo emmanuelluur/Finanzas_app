@@ -38,7 +38,7 @@ class UsuariosController extends BaseController
             echo $mensaje;
         } catch (\Exception $e) {
             //  Si falla la validacion $e->getMessage();
-            echo $e->getMessage();"<div class='alert alert-danger'>Todos los campos son requeridos</div>";
+            echo "<div class='alert alert-danger'>Todos los campos son requeridos</div>";
         }
     }
     public function GetUser($data)

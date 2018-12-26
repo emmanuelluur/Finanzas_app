@@ -28,6 +28,18 @@ CREATE TABLE IF NOT EXISTS tbl_eventos
     eventType int,
     dateReg DATE,
     timeReg TIME,
+    idCategoria int,
+    created_at DATETIME,
+    updated_at DATETIME
+    -- specify more columns here
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS tbl_categotias
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    idUser INT,
+    categoria text,
     created_at DATETIME,
     updated_at DATETIME
     -- specify more columns here

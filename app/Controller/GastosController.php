@@ -16,13 +16,13 @@ class GastosController
         $description = v::stringType()->notEmpty();
         $monto = v::numeric()->notEmpty();
         $ticket = v::stringType()->notEmpty();
-
+        $categoria = v::numeric();
         try {
             //  se validan los datos
             $description->assert($data['description']);
             $ticket->assert($data['ticket']);
             $monto->assert($data['mount']);
-
+            $categoria->assert($data['categoria']);
             //  guardado BD
             $gastos = new Gastos;
             $gastos->description = BaseController::avoidXss($data['description']);
@@ -31,6 +31,7 @@ class GastosController
             $gastos->dateReg = DATE('Y-m-d');
             $gastos->timeReg = DATE('H:i:s');
             $gastos->eventType = 2;
+            $gastos->idCategoria =  BaseController::avoidXss($data['categoria']); // Categoria
             $gastos->idUser = $_SESSION['idUser'];
             $gastos->save();
             //  respuesta de guardado
