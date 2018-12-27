@@ -10,6 +10,30 @@ require_once "../content/header.html";
     <div class = "row" >
         <div class = 'col-sm-2' style = 'text-align:center;'>
             <div id="image"></div>
+            <!-- form for change password -->
+            <div class = 'btn-group'>
+                <button type="button" class="btn btn-info">Edita contraseña</button>
+                <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+               
+                    <form class="dropdown-menu p-3">
+                        <div class = "form-group">
+                            <label for="odlPass">Contraseña Actual</label>
+                            <input type="password"  name="actualPassword" id="actualPassword">
+                        </div>
+                        <div class = "form-group">
+                            <label for="odlPass">Contraseña Nueva</label>
+                            <input type="password"  name="nuevoPass" id="nuevoPass">
+                        </div>
+                        <div class = "form-group">
+                            <label for="odlPass">Verifica</label>
+                            <input type="password"  name="verifica" id="verifica">
+                        </div>
+                        <button type = "button" class = "btn btn-success btn-sm btn-block">Guarda</button>
+                    </form>
+                
+            </div>
         </div>
         <div class = 'col'>
             <form name = 'usuarioEdita' id = 'usuarioEdita'>
