@@ -11,7 +11,7 @@ require_once "../content/header.html";
                 <hr>
                 <div class = "form-group">
                     <label for="description">Categoría</label>
-                    <input type="text" class='form-control' id = 'description' name='description'>
+                    <input type="text" class='form-control' id = 'categoria' name='categoria'>
                 </div>
                 <hr>
                 <span id = 'responseText'></span>

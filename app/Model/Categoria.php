@@ -19,7 +19,7 @@ $capsule->setAsGlobal();
 
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
-class Categorias extends Model
+class Categoria extends Model
 {
     protected $table = "tbl_categorias";
 }

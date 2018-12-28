@@ -19,3 +19,27 @@ function saveCategoria() {
         request.send(formData);
     });
 }
+
+function ListaCategorias() {
+    let url = "../app/Controller/CategoriasController.php?getCategoria=true";
+    let request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    //  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.onreadystatechange = function () {
+
+        if (this.readyState == 4 && this.status == 200) {
+            let select = document.querySelector("#categoria");
+            let datos = JSON.parse(this.responseText);
+            for (let i = 0; i < datos.length; i++)
+            {
+                let opt = document.createElement ("option");
+                let opt_txt = document.createTextNode(datos[i].categoria);
+                opt.appendChild(opt_txt);
+                opt.setAttribute("value",datos[i].id);
+                select.appendChild(opt);
+            }
+              
+        }
+    }
+    request.send();
+}

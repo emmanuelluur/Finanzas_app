@@ -34,8 +34,10 @@ require_once "../content/header.html";
     </div>
 </div>
 <script src="../views/js/gastosJs.js"></script>
+<script src="../views/js/categoriaJs.js"></script>
 <script>
 saveGasto();
+ListaCategorias();
 </script>
 <?php
 require_once "../content/footer.html";
