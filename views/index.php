@@ -20,12 +20,14 @@ require_once "../content/header.html";
                 <div class='card-header'>Ultimos 10 eventos</div>
                 <div class = 'card-body'>
                 <div class = 'row'>
-                        <div class = 'col-sm-4'>Descripción</div>
-                        <div class = 'col-sm-4'>Monto</div>
+                        <div class = 'col-sm-4'>Descripción <hr></div>
+                        <div class = 'col-sm-4'>Monto <hr></div>
+                        <div class = 'col-sm-4'>Categoria <hr></div>
                     </div>
                     <div class = 'row'>
                         <div class = 'col-sm-4'> <span id = 'description'></span></div>
                         <div class = 'col-sm-4'> <span id = 'monto'></span></div>
+                        <div class = 'col-sm-4'> <span id = 'categoria'></span></div>
                     </div>
                    
                 </div>
