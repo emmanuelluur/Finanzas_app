@@ -11,6 +11,40 @@ $dotenv->load();
 
 class UsuariosController extends BaseController
 {
+    public function ChangePassword($data)
+    {
+        $opciones = [ //    costo password hash
+            'cost' => 12,
+        ];
+        $message = '';
+        $password = v::stringType()->notEmpty();
+        $verify = v::stringType()->notEmpty();
+        try {
+            $password->assert($data['nuevoPass']);
+            $verify->assert($data['verifica']);
+
+            $oldPass = Usuarios::where("id", $_SESSION['idUser'])->select("password")->get();
+
+            if (password_verify($data['actualPassword'], $oldPass[0]['password'])) {
+                if ($data['nuevoPass'] != $data['verifica']):
+                    $message = "<div class = 'alert alert-danger'>Las contraseñas no coinciden</div>";
+                else:
+                    $usuario = Usuarios::find($_SESSION['idUser']);
+                    $usuario->password = password_hash(BaseController::avoidXss($data['nuevoPass']), PASSWORD_BCRYPT, $opciones);
+                    $usuario->save();
+                    $message = "<div class = 'alert alert-success'>Guardado</div>";
+                endif;
+            } else {
+                $message = "<div class = 'alert alert-danger'>Password actual no coincide</div>";
+            }
+
+        } catch (\Exception $e) {
+            //throw $th;
+            $message = $e->getMessage();
+        }
+        echo $message;
+
+    }
     public function EditUser($data)
     {
         //  Reglas de validacion
@@ -22,12 +56,12 @@ class UsuariosController extends BaseController
             //  se validan los datos
             $name->assert($data['name']);
             $lastname->assert($data['lastname']);
-           
+
             $image->assert($data['image']);
             $mensaje = null;
 
             //  guardado BD
-            $usuario =Usuarios::find($_SESSION['idUser']);
+            $usuario = Usuarios::find($_SESSION['idUser']);
             $usuario->name = BaseController::avoidXss($data['name']);
             $usuario->lastname = BaseController::avoidXss($data['lastname']);
             $usuario->image = BaseController::avoidXss($data['image']);
@@ -131,4 +165,10 @@ if (isset($_GET['getUser'])) {
 if (isset($_POST['editUser'])) {
     $formulario = $_POST;
     $usuario->EditUser($formulario);
+}
+
+if (isset($_POST['newPassword'])) {
+    $formulario = $_POST;
+
+    $usuario->ChangePassword($formulario);
 }
