@@ -11,6 +11,28 @@ $dotenv->load();
 
 class UsuariosController extends BaseController
 {
+    protected $directorio = "../../uploads/";
+    protected $dirDb="../uploads/";
+    protected $type = ["image/jpg", "image/jpeg", "image/png"];
+    public function UploadImage()
+    {
+        // ruta directorio
+        $imageRoute = ($this->directorio . basename($_FILES['imageProfile']['name']));
+        $imgDb = $this->dirDb . basename($_FILES['imageProfile']['name']);
+        /**
+         * Valida si es imagen admitida
+         */
+        if (\in_array($_FILES['imageProfile']['type'], $this->type)) {
+            //  comprueba que se subio
+            if (move_uploaded_file($_FILES['imageProfile']['tmp_name'], $imageRoute)) {
+                return $imgDb;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
     public function ChangePassword($data)
     {
         $opciones = [ //    costo password hash
@@ -45,26 +67,29 @@ class UsuariosController extends BaseController
         echo $message;
 
     }
-    public function EditUser($data)
+    public function EditUser($data, $urlImg)
     {
         //  Reglas de validacion
         $name = v::stringType()->notEmpty();
         $lastname = v::stringType()->notEmpty();
         //    $password = v::stringType()->notEmpty();
-        $image = v::stringType()->notEmpty();
+        
         try {
             //  se validan los datos
             $name->assert($data['name']);
             $lastname->assert($data['lastname']);
 
-            $image->assert($data['image']);
+            
             $mensaje = null;
 
             //  guardado BD
             $usuario = Usuarios::find($_SESSION['idUser']);
             $usuario->name = BaseController::avoidXss($data['name']);
             $usuario->lastname = BaseController::avoidXss($data['lastname']);
-            $usuario->image = BaseController::avoidXss($data['image']);
+            if ($urlImg != false) {
+                $usuario->image = $urlImg;
+            }
+            
             $usuario->save();
             $mensaje = "<div class='alert alert-success'>Guardado</div>";
 
@@ -108,7 +133,7 @@ class UsuariosController extends BaseController
         $lastname = v::stringType()->notEmpty();
         $email = v::stringType()->notEmpty();
         $password = v::stringType()->notEmpty();
-        $image = v::stringType()->notEmpty();
+        $url = "../uploads/base_profile.png";
 
         try {
             //  se validan los datos
@@ -116,7 +141,7 @@ class UsuariosController extends BaseController
             $lastname->assert($data['lastname']);
             $email->assert($data['mail']);
             $password->assert($data['password']);
-            $image->assert($data['image']);
+            
             $opciones = [ //    costo password hash
                 'cost' => 12,
             ];
@@ -133,7 +158,7 @@ class UsuariosController extends BaseController
                 $usuario->mail = BaseController::avoidXss($data['mail']);
                 //  PASSWORD ENCRIPTADO
                 $usuario->password = password_hash(BaseController::avoidXss($data['password']), PASSWORD_BCRYPT, $opciones);
-                $usuario->image = BaseController::avoidXss($data['image']);
+                $usuario->image = $url;
                 $usuario->save();
                 $mensaje = "<div class='alert alert-success'>Guardado</div>";
             } else {
@@ -151,6 +176,7 @@ $usuario = new UsuariosController;
 // guarda usuario
 if (isset($_POST['save'])) {
     $formulario = $_POST; //  datos enviados
+    
     $usuario->SaveUser($formulario);
 }
 
@@ -164,7 +190,12 @@ if (isset($_GET['getUser'])) {
 
 if (isset($_POST['editUser'])) {
     $formulario = $_POST;
-    $usuario->EditUser($formulario);
+    $image = $usuario->UploadImage();
+    if ($image == false){
+        $usuario->EditUser($formulario,false);
+    } else {
+        $usuario->EditUser($formulario, $image);
+    }  
 }
 
 if (isset($_POST['newPassword'])) {

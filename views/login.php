@@ -45,10 +45,7 @@ require_once "../content/login.html";
                     <label for="description">Contraseña</label>
                     <input type="password" class='form-control' id = 'password' name='password'>
                 </div>
-                <div class = "form-group">
-                    <label for="description">Url Imagen</label>
-                    <input type="text" class='form-control' id = 'image' name='image'>
-                </div>
+                
 
                 <span id = 'responseText'></span>
                 <button type='button' class='btn btn-success btn-sm btn-block' id = 'saveUsuario' name = 'saveUsuario'> Registrar</button>

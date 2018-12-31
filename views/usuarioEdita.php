@@ -27,6 +27,9 @@ require_once "../content/header.html";
                     URL imagen: <input type="text" class = 'form-control' id = 'img' name = 'image'>
                 </div>
                 <div class = 'form-group'>
+                    Subir Imagen: <input type="file" class = 'form-control' id = 'imageProfile' name = 'imageProfile'>
+                </div>
+                <div class = 'form-group'>
                     Email: <span id = 'mail'></span>
                 </div>
                 <span id = 'responseText'></span>

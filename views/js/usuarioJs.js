@@ -59,9 +59,11 @@ function editUser() {
 
     btn_guarda.addEventListener("click", function () {
         let url = "../app/Controller/UsuariosController.php";
+        let imageProfile = document.querySelector("#imageProfile");
         let form = document.querySelector("#usuarioEdita");
         let formData = new FormData(form);
         formData.append("editUser", true);
+        formData.append("imageProfile", imageProfile.files[0]);
         let request = new XMLHttpRequest();
         request.open('POST', url, true);
         //  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
